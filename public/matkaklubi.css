@@ -1,0 +1,138 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.paiskonteiner {
+    background: transparent url('./pildid/Hills.png') 0% 0% no-repeat padding-box;
+    width: 100%;
+    height: 980px;
+}
+
+.paiserida {
+    padding-top: 37px;
+}
+
+.pais-logoala {
+    display: flex;
+}
+
+.pais-logo {
+    width: 100px;
+    height: 100px;
+    background-image: url('./pildid/klubilogo.png');
+    background-size: cover;
+    background-repeat: none;
+    font-weight: 800;
+    font-size: 33px;
+    letter-spacing: 0px;
+    color: #0B0B0B;
+    opacity: 1;
+}
+
+.pais-nimi {
+    font-weight: 800;
+    font-size: 33px;
+    letter-spacing: 0px;
+    color: #0B0B0B;
+    text-transform: uppercase;
+    width: 126px;
+    height: 75px;
+}
+
+.pais-menyy {
+    font-family: 'Montserrat', sans-serif;
+	font-size: 16.67px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2.67px;
+    margin-left: auto
+}
+
+.pais-menyy ul {
+    list-style-type: none;
+    justify-content: flex-end;
+}
+
+.pais-menyy li {
+    padding: 0px;
+    margin-left: 10px;
+    min-width: 100px;
+}
+
+.pais-menyy a {
+    color: #0B0B0B;
+}
+
+.pealkiri-tekstid {
+    padding-top: 200px;
+}
+
+.pealkiri-tekstid > div {
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    color: #0B0B0B;
+    display: flex;
+}
+
+.pealkiri-tekstid h1 {
+    font-size: 75px;
+    font-weight: 800;
+}
+.pealkiri-tekstid h2 {
+    font-size: 40px;
+    font-weight: 800;
+}
+.pealkiri-tekstid h3 {
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.liblikas1 {
+    height: 66px;
+    display: block;
+    margin-top: -40px;
+}
+
+.liblikas2 {
+    height: 32px;
+    width: 60px;
+    display: block;
+    margin-bottom: 40px;
+    margin-left: -62px;
+}
+
+.pealispilt {
+    overflow: hidden;
+}
+
+.pealispilt .matkaja {
+    width: 750px;
+    height: 750px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: -400px;
+}
+
+.pealispilt .vari {
+    width: 1087px;
+    height: 87px;
+    margin-top: -37px;
+    margin-left: -178px;
+}
+
+.nupp-paises {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 2.25px;
+    font-size: 12px;
+    line-height: 46px;
+    padding-left: 22px;
+    padding-right: 22px;
+    border-radius: 0px;
+    color: white;
+    background-color: black;
+    margin-top: 20px;
+}
+
+
