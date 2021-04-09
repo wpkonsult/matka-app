@@ -65,58 +65,30 @@
 
     </div>
     <div class="container">
+        <div>
+            <h2><%= matkad.length %> registreerimiseks avatud matka</h2>
+        </div>
         <div class="row">
+            <% for (matk of matkad) { %>
             <div class="col-md-4 card">
-                <img class="card-img-top" src="./pildid/syst1.jpg"></img>
+                <img class="card-img-top" src="<%= matk.piltUrl %>"></img>
                 <div class="card-body">
                     <div class="card-title">
-                        Süstamakt
+                        <h3>
+                            <%= matk.nimetus %>
+                        </h3>
                     </div>
                     <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eos voluptatum eum explicabo ipsa dolores ullam ab saepe sequi aliquam suscipit eaque nam deserunt tenetur vero autem molestias eius! Praesentium?
+                        <%= matk.kirjeldus %>
+                    </p>
+                    <p>
+                        Matkale registreerunuid: <%= matk.registreerunud.length %>
                     </p>
                     <a class="btn btn-primary" href="#">Registreeru</a>
                 </div>
 
-            </div>
-            <div class="col-md-4 card">
-                <img class="card-img-top" src="./pildid/syst1.jpg"></img>
-                <div class="card-body">
-                    <div class="card-title">
-                        Süstamakt
-                    </div>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eos voluptatum eum explicabo ipsa dolores ullam ab saepe sequi aliquam suscipit eaque nam deserunt tenetur vero autem molestias eius! Praesentium?
-                    </p>
-                    <a class="btn btn-primary" href="#">Registreeru</a>
-                </div>
             </div> 
-            <div class="col-md-4 card">
-                <img class="card-img-top" src="./pildid/matk_tartus1.jpg"></img>
-                <div class="card-body">
-                    <div class="card-title">
-                        Jalgsimatk
-                    </div>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eos voluptatum eum explicabo ipsa dolores ullam ab saepe sequi aliquam suscipit eaque nam deserunt tenetur vero autem molestias eius! Praesentium?
-                    </p>
-                    <a class="btn btn-primary" href="#">Registreeru</a>
-                </div>
-
-            </div>
-            <div class="col-md-4 card">
-                <img class="card-img-top" src="./pildid/rattamatk.jpg"></img>
-                <div class="card-body">
-                    <div class="card-title">
-                        Rattamatk
-                    </div>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eos voluptatum eum explicabo ipsa dolores ullam ab saepe sequi aliquam suscipit eaque nam deserunt tenetur vero autem molestias eius! Praesentium?
-                    </p>
-                    <a class="btn btn-primary" href="#">Registreeru</a>
-                </div>
-
-            </div>                                   
+            <% } %>                                 
         </div>
     </div>
 
