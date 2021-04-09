@@ -64,7 +64,11 @@ function naitaMatkaInfot(req, res) {
   const matk = koikMatkad[indeks]
 
   console.log('Parameeter matkaIndeks: ' + req.params.matkIndeks)
-  const andmed = { matkaIndeks: indeks, matk: matk }
+  const andmed = { 
+      matkaIndeks: indeks, 
+      matk: matk 
+  }
+  
   return res.render('pages/matkainfo', andmed)
 }
 

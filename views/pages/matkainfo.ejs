@@ -33,12 +33,22 @@
             </div>
             <div>
                 <h2>Matk <%= matk.nimetus %></h2>
-                <div>
-                    siia tuleb matka info
-                    Matka indeks: <%= matkaIndeks %>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img class="img-fluid" src="<%= matk.piltUrl %>" alt="">
+                    </div>
+                    <div class="col-sm-8">
+                        <p>
+                            <%= matk.kirjeldus %>
+                        </p>
+                        <p>
+                            Registreerunuid: <%= matk.registreerunud.length %>
+                        </p>
+                    </div>
                 </div>
+                <hr class="mt-sm-3">
                 <h2>Pakub huvi? Registreeru matkale</h2>
-                <div>
+                <div class="mt-3">
                     <form action="#">
                         <div class="form-group">
                             <label for="nimi">Sinu nimi:</label>
