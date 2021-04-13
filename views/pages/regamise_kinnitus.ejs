@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registreerimine kinnitatud</title>
+    <%- include ("../partials/header.ejs") %>
+</head>
+<body>
+        <div class="container">
+            <%- include ("../partials/matkamenyy.ejs") %>      
+            <div>
+                <% if (kasOnnestus) { %>
+                    <h1>Registreerumine matkale <%= matk.nimetus %> õnnestus</h1>
+                    <div>Matkale on kokku registreerunud <%= matk.registreerunud.length %> inimest </div>
+                <% } else { %>
+                    <h1>Registeerumine ebaõnnestus</h1>
+                <% } %>
+            </div>
+        </div>
+    <script src="/matkaklubi.js"></script>
+</body>
+</html>

@@ -105,13 +105,12 @@ function registreeriMatkale(req, res) {
   const kasOnnestus = lisaRegistreerimine(matkaIndeks, nimi, email, markus)
 
   //kui õnnestus, siis renderda mall, mis näitab et registreerumine õnnestus
-  if (kasOnnestus) {
-    res.send('Registreerumine õnnestus. Kokku registreerunuid: ' + koikMatkad[matkaIndeks].registreerunud.length)
-  } else {
-    res.send('Registreerumine ebaõnenstus')
-  }
   //kui ei õnnestunud, siis renderda mall, mis näitab, et registeerumine ebaõnenstus
+  return res.render('pages/regamise_kinnitus', { kasOnnestus: kasOnnestus, matk: koikMatkad[matkaIndeks] })
+}
 
+function kontaktiLeht(req, res) {
+  return res.render('pages/kontakt')
 }
 
 express()
@@ -121,4 +120,5 @@ express()
   .get('/', naitaEsilehte)
   .get('/matkainfo/:matkIndeks', naitaMatkaInfot)
   .get('/registreeri', registreeriMatkale)
+  .get('/kontakt', kontaktiLeht)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
