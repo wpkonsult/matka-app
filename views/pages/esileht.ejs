@@ -69,7 +69,11 @@
             <h2><%= matkad.length %> registreerimiseks avatud matka</h2>
         </div>
         <div class="row">
-            <% for (matk of matkad) { %>
+            <% 
+            let matk;
+            for (let i = 0; i < matkad.length; i++) { 
+                matk = matkad[i]
+            %>
             <div class="col-md-4 card">
                 <img class="card-img-top" src="<%= matk.piltUrl %>"></img>
                 <div class="card-body">
@@ -84,7 +88,7 @@
                     <p>
                         Matkale registreerunuid: <%= matk.registreerunud.length %>
                     </p>
-                    <a class="btn btn-primary" href="#">Registreeru</a>
+                    <a class="btn btn-primary" href="/matkainfo/<%= i %>">Registreeru</a>
                 </div>
 
             </div> 
