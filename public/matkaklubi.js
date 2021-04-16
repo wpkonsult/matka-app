@@ -8,3 +8,13 @@ function saadaVorm() {
     console.log('Vormi andmed')
     console.log(andmed)
 }
+
+function kontrolliVormi() {
+    const nimi = document.getElementById('nimi').value
+    if (!nimi) {
+        alert('Täida nime lahter!')
+        return false
+    }
+
+    return true
+}
