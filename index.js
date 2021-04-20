@@ -188,11 +188,14 @@ function loeKoikRegistreerimised(req, res) {
             return res.send({ error: 'Viga: ' + err.message });
           }
           //koikMatkad[matkaIndeks].registreerunud = registreerumised
+          console.log('Andmebaasist leiti ' + registreerumised.length + " objekti")
           return res.send(registreerumised);
       });
     })
- 
+}
 
+function administraator(req, res) {
+  return res.render("pages/administraator")
 }
 
 express()
@@ -203,5 +206,6 @@ express()
   .get('/matkainfo/:matkIndeks', naitaMatkaInfot)
   .get('/registreeri', registreeriMatkale)
   .get('/kontakt', kontaktiLeht)
+  .get('/administraator', administraator)
   .get('/api/registreerimine', loeKoikRegistreerimised)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
