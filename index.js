@@ -12,7 +12,7 @@ const matk1 = {
   nimetus: 'Rabamatk',
   osalejaid: 5,
   kuupaev: '2021-05-03',
-  registreerunud: ['Karu Kati', 'Karu Mati', 'Rebase Rein'],
+  registreerunud: [],
   kirjeldus: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eos voluptatum eum explicabo ipsa dolores ullam ab saepe sequi aliquam suscipit eaque nam deserunt tenetur vero autem molestias eius! Praesentium?',
   piltUrl: '/pildid/matkaja.png'
 }
@@ -21,7 +21,7 @@ const matk2 = {
   nimetus: 'Rattamatk',
   osalejaid: 10,
   kuupaev: '2021-06-03 - 2021-06-10',
-  registreerunud: ['Rebase Rein'],
+  registreerunud: [],
   kirjeldus: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, eos voluptatum eum explicabo ipsa dolores ullam ab saepe sequi aliquam suscipit eaque nam deserunt tenetur vero autem molestias eius! Praesentium?',
   piltUrl: '/pildid/rattamatk.jpg'
 }
@@ -135,7 +135,10 @@ function lisaRegistreerimine(matkaIndeks, nimi, email, markus) {
 }
 
 function naitaEsilehte(req, res) {
-  const andmed = { matkad: koikMatkad }
+  const vakantsidegaMatkad = koikMatkad.filter( 
+    matk => matk.registreerunud.length < matk.osalejaid
+  )
+  const andmed = { matkad: vakantsidegaMatkad }
   return res.render('pages/esileht', andmed)
 }
 
@@ -194,9 +197,37 @@ function loeKoikRegistreerimised(req, res) {
     })
 }
 
+function loeKoikRegistreerimised() {
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect((err) => {
+      if (err) {
+          return res.send({ error: 'Viga: ' + err.message });
+      }
+      const collection = client
+        .db(andmebaas)
+        .collection("matkaklubi_" + andmebaas + "_registreerumised");
+      collection.find({}).toArray(
+        (err, registreerumised) => {
+          for (reg of registreerumised) {
+            const indeks = reg.matkaIndeks;
+            koikMatkad[indeks].registreerunud.push(reg.nimi)
+          }
+      });
+    })
+}
+
 function administraator(req, res) {
   return res.render("pages/administraator")
 }
+
+function loeMatkad(req, res) {
+  return res.send(koikMatkad.map((matk) => {
+    return { nimetus: matk.nimetus, kuupaev: matk.kuupaev }
+  }))
+}
+
+loeKoikRegistreerimised()
+
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -208,4 +239,5 @@ express()
   .get('/kontakt', kontaktiLeht)
   .get('/administraator', administraator)
   .get('/api/registreerimine', loeKoikRegistreerimised)
+  .get('/api/matkad', loeMatkad)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
